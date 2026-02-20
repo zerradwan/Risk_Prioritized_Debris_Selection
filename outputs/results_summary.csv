@@ -1,0 +1,4 @@
+method,n_targets,cost_km
+1. Greedy local search,9,44886.50556628263
+2. Simulated annealing,9,44886.50556628263
+3. Quantum/classical QUBO,7,49999.35991902325

@@ -1,0 +1,45 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsmath, amssymb, geometry}
+\usepackage{graphicx}
+\usepackage{hyperref}
+
+
+\geometry{margin=1in}
+
+\title{Distance-Constrained Satellite Collection as a QUBO Optimization Problem}
+\author{Zain Radwan}
+\date{January 2026}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Abstract}
+In this paper we work to formulate a satellite collection problem of the first 100 largest satellites by TLE data (gathered on celestrack) as a combinatorial optimization task under mission resource constraints. Given a catalog of orbital objects derived from Two-Line Element (TLE) data, the objective is to maximize the number of satellites that can be collected subject to a total mission cost budget. Mission cost is modeled as a function of distance (or proxy $\Delta V$) between a servicing spacecraft and candidate targets. The resulting problem is a 0--1 travelling salesman problem (TSP), which is NP-hard. We reformulate the constrained optimization problem into a Quadratic Unconstrained Binary Optimization (QUBO) form, enabling solution via quantum annealing or classical QUBO solvers. We attempted to analyze several approaches coming to a conclusion on the best solver to optimize this TSP. 
+
+\newpage
+
+\section{Introduction}
+The rapid growth of orbital debris and inactive satellites in Low Earth Orbit motivates the development of optimized debris collection strategies, especially with the effect of Kessler syndrome exponentially increasing the risk of in orbit collisions. We gained an interest in SSA from various sources such as (some paper I will add later), and (another paper) and were inspired to formulate and solve our own optimization problem on space satellite/debris retrieval which seems to be an active area of research. 
+\newline
+
+\noindent
+Given limited propulsion resources, a servicing spacecraft must select a subset of candidate targets such that total mission cost does not exceed available budget. This selection process is inherently combinatorial and can be modeled as a binary optimization problem.
+\newline
+
+\noindent
+In our work, we consider a simplified formulation in which the cost of collecting each object is approximated using distance derived from TLE-based orbital state vectors. The goal is to maximize the number of objects collected within a fixed mission budget.
+
+\newpage
+
+\section{Problem Definition}
+
+
+
+\newpage
+
+\end{document}

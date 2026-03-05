@@ -38,7 +38,7 @@ In our work, we consider a simplified formulation in which the cost of collectin
 
 \section{Problem Definition}
 
-
+This problem can be characterized into a QUBO constraint framework and then solved with various solvers at our disposal.
 
 \newpage
 

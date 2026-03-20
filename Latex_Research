@@ -38,7 +38,97 @@ In our work, we consider a simplified formulation in which the cost of collectin
 
 \section{Problem Definition}
 
-This problem can be characterized into a QUBO constraint framework and then solved with various solvers at our disposal.
+We consider a satellite retrieval mission in which a servicing spacecraft must collect a subset of high-priority orbital objects under limited mission resources. 
+The objective is to maximize the total importance of retrieved satellites while minimizing total mission cost, modeled through orbital distance.
+
+\subsection{Orbital State Representation}
+
+Let $N$ denote the number of candidate satellites. 
+Each satellite is represented by its position vector in three-dimensional space, obtained from Two-Line Element (TLE) data using SGP4 propagation:
+
+\[
+r_i \in \mathbb{R}^3, \quad i = 1, \dots, N.
+\]
+
+The servicing spacecraft (depot) is represented by
+
+\[
+r_0 \in \mathbb{R}^3.
+\]
+
+\subsection{Distance and Cost Model}
+
+The cost of traveling between satellites $i$ and $j$ is modeled as the Euclidean distance between their position vectors:
+
+\[
+d_{ij} = \| r_i - r_j \|_2.
+\]
+
+Similarly, the cost of traveling between the depot and satellite $i$ is
+
+\[
+d_{0i} = \| r_0 - r_i \|_2.
+\]
+
+These distances serve as a proxy for orbital transfer cost (e.g., $\Delta V$).
+
+Each satellite is also assigned an importance weight
+
+\[
+w_i \ge 0,
+\]
+
+representing its priority for retrieval.
+
+\subsection{Decision Variables}
+
+Let $\pi$ denote an ordered sequence (tour) of selected satellites:
+
+\[
+\pi = (\pi_1, \pi_2, \dots, \pi_k),
+\]
+
+where $k \le N$ is the number of satellites selected for retrieval.
+
+\subsection{Objective Function}
+
+The total mission cost of a tour $\pi$ is defined as
+
+\[
+C(\pi) =
+d_{0,\pi_1}
++
+\sum_{j=1}^{k-1} d_{\pi_j,\pi_{j+1}}
++
+d_{\pi_k,0}.
+\]
+
+The total importance of retrieved satellites is
+
+\[
+W(\pi) = \sum_{j=1}^{k} w_{\pi_j}.
+\]
+
+The optimization problem is therefore
+
+\[
+\max_{\pi} \quad W(\pi)
+\]
+
+subject to
+
+\[
+C(\pi) \le B,
+\]
+
+where $B$ is the total mission budget.
+
+\subsection{Problem Classification}
+
+This formulation corresponds to a prize-collecting variant of the Traveling Salesman Problem (TSP), 
+commonly referred to as the Orienteering Problem. 
+It combines aspects of subset selection and route optimization and is known to be NP-hard.
+
 
 \newpage
 
